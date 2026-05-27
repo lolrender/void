@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>void / moto</title>
 
 <style>
@@ -38,16 +39,19 @@ body.loaded {
   align-items: center;
   gap: 14px;
 
-  z-index: 100;
+  z-index: 1000;
 }
 
 .brand {
   color: #888;
 }
 
+/* BACK BUTTON */
+
 .back {
   color: #666;
   text-decoration: none;
+
   transition: 0.2s ease;
 }
 
@@ -56,9 +60,9 @@ body.loaded {
   transform: translateX(-2px);
 }
 
-/* GAME */
+/* GAME WINDOW */
 
-iframe {
+.game {
   position: absolute;
   top: 40px;
   left: 0;
@@ -68,25 +72,63 @@ iframe {
 
   border: none;
 }
+
+/* LOADING SCREEN */
+
+#loading {
+  position: fixed;
+  inset: 0;
+
+  background: #000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #777;
+
+  z-index: 9999;
+}
 </style>
 </head>
 
 <body>
 
+<!-- TOP BAR -->
 <div class="topbar">
 
+  <!-- back button FIRST -->
   <a class="back" href="../index.html">← back</a>
 
   <span class="brand">void™ by jp</span>
 
 </div>
 
-<iframe src="https://motox3m2.io/"></iframe>
+<!-- LOADING SCREEN -->
+<div id="loading">loading</div>
+
+<!-- GAME -->
+<iframe class="game" src="https://motox3m2.io/"></iframe>
 
 <script>
+
+/* FADE IN PAGE */
 window.addEventListener("load", () => {
   document.body.classList.add("loaded");
 });
+
+/* HIDE LOADING AFTER GAME LOADS */
+const iframe = document.querySelector(".game");
+const loading = document.getElementById("loading");
+
+iframe.addEventListener("load", () => {
+  setTimeout(() => {
+    loading.style.display = "none";
+  }, 400);
+});
+
 </script>
 
 </body>
