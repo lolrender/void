@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VOID / G*ME</title>
+<title>void™ by jp</title>
 
 <style>
 body {
@@ -13,24 +13,61 @@ body {
   font-family: Arial;
 }
 
+/* TOP BAR */
+
 .topbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+
   padding: 12px 16px;
+
   font-size: 11px;
   color: #888;
   letter-spacing: 2px;
+
   background: rgba(0,0,0,0.6);
+
+  z-index: 100;
 }
+
+/* BACK BUTTON */
+
+.back {
+  position: fixed;
+
+  top: 12px;
+  left: 120px;
+
+  color: #666;
+  text-decoration: none;
+
+  font-size: 11px;
+  letter-spacing: 2px;
+
+  z-index: 101;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.back:hover {
+  color: #fff;
+  transform: translateX(-2px);
+}
+
+/* GAME */
 
 iframe {
   position: absolute;
   top: 40px;
   left: 0;
+
   width: 100%;
   height: calc(100% - 40px);
+
   border: none;
 }
 </style>
@@ -38,8 +75,14 @@ iframe {
 
 <body>
 
-<div class="topbar">VOID / G*ME</div>
+<div class="topbar">void™ by jp</div>
 
+<!-- BACK BUTTON -->
+<a href="../index.html" class="back">
+  ← back
+</a>
+
+<!-- GAME -->
 <iframe src="https://motox3m2.io/"></iframe>
 
 </body>
