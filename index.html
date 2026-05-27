@@ -13,19 +13,26 @@
   font-family: Arial, sans-serif;
 }
 
+/* ===== PAGE FADE IN ===== */
 body {
   background: #000;
   color: #fff;
   overflow-x: hidden;
+
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-/* ===== STAR BACKGROUND ===== */
+body.loaded {
+  opacity: 1;
+}
+
+/* ===== STARS ===== */
 
 #stars {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: #000;
 }
 
 .star {
@@ -37,16 +44,11 @@ body {
 }
 
 @keyframes twinkle {
-  0%,100% {
-    opacity: 0.15;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
+  0%,100% { opacity: 0.15; }
+  50% { opacity: 0.5; }
 }
 
-/* ===== BOOT SCREEN ===== */
+/* ===== BOOT ===== */
 
 #boot {
   position: fixed;
@@ -71,10 +73,9 @@ body {
 
 .slogan {
   margin-top: 12px;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 3px;
   color: #aaa;
-  text-align: center;
 }
 
 .progress {
@@ -93,9 +94,7 @@ body {
 }
 
 @keyframes load {
-  to {
-    width: 100%;
-  }
+  to { width: 100%; }
 }
 
 /* ===== MAIN ===== */
@@ -105,12 +104,9 @@ main {
   padding: 80px 30px;
   max-width: 900px;
   margin: 0 auto;
-
   position: relative;
   z-index: 2;
 }
-
-/* ===== HEADER ===== */
 
 header {
   text-align: center;
@@ -126,7 +122,6 @@ h1 {
 
 .sub {
   margin-top: 10px;
-
   font-size: 11px;
   letter-spacing: 3px;
   color: #888;
@@ -136,10 +131,7 @@ h1 {
 
 .grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(auto-fit, minmax(160px, 1fr));
-
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 14px;
 }
 
@@ -147,20 +139,16 @@ h1 {
 
 .card {
   border: 1px solid #222;
-
   padding: 16px;
-
   text-decoration: none;
   color: #fff;
 
-  transition:
-    border-color 0.2s ease,
-    transform 0.2s ease;
+  transition: 0.25s ease;
 }
 
 .card:hover {
   border-color: #fff;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
 .title {
@@ -170,25 +158,19 @@ h1 {
 
 .tag {
   margin-top: 6px;
-
   font-size: 10px;
   color: #777;
 }
 
-/* ===== VERSION ===== */
+/* VERSION */
 
 .version {
   position: fixed;
-
   bottom: 10px;
   right: 14px;
-
   font-size: 10px;
   letter-spacing: 2px;
-
   color: #222;
-
-  z-index: 3;
 }
 </style>
 
@@ -196,23 +178,14 @@ h1 {
 
 <body>
 
-<!-- STARS -->
 <div id="stars"></div>
 
-<!-- BOOT -->
 <div id="boot">
-
   <div class="logo">void</div>
-
   <div class="slogan"></div>
-
-  <div class="progress">
-    <div class="bar"></div>
-  </div>
-
+  <div class="progress"><div class="bar"></div></div>
 </div>
 
-<!-- MAIN -->
 <main id="main">
 
   <header>
@@ -246,13 +219,16 @@ h1 {
 
 </main>
 
-<!-- VERSION -->
 <div class="version">VOID / 1.0</div>
 
 <script>
 
-/* ===== RANDOM BOOT TEXT ===== */
+/* FADE IN */
+window.addEventListener("load", () => {
+  document.body.classList.add("loaded");
+});
 
+/* BOOT TEXT */
 const bootMessages = [
   "made by jp",
   "hello quinn",
@@ -264,8 +240,7 @@ const bootMessages = [
 document.querySelector(".slogan").textContent =
   bootMessages[Math.floor(Math.random() * bootMessages.length)];
 
-/* ===== BOOT TRANSITION ===== */
-
+/* BOOT TRANSITION */
 setTimeout(() => {
 
   const boot = document.getElementById("boot");
@@ -273,23 +248,17 @@ setTimeout(() => {
   boot.style.opacity = "0";
 
   setTimeout(() => {
-
     boot.style.display = "none";
-
     document.getElementById("main").style.display = "block";
-
   }, 500);
 
-}, 1900);
+}, 2400);
 
-/* ===== STAR GENERATOR ===== */
-
+/* STARS */
 const starContainer = document.getElementById("stars");
 
 for (let i = 0; i < 140; i++) {
-
   const star = document.createElement("div");
-
   star.className = "star";
 
   const size = Math.random() * 2;
@@ -300,8 +269,7 @@ for (let i = 0; i < 140; i++) {
   star.style.top = Math.random() * 100 + "%";
   star.style.left = Math.random() * 100 + "%";
 
-  star.style.animationDelay =
-    (Math.random() * 4) + "s";
+  star.style.animationDelay = (Math.random() * 4) + "s";
 
   starContainer.appendChild(star);
 }
