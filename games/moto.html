@@ -3,14 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>void™ by jp</title>
+<title>void / moto</title>
 
 <style>
 body {
   margin: 0;
   background: #000;
-  color: #fff;
   font-family: Arial;
+
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+body.loaded {
+  opacity: 1;
 }
 
 /* TOP BAR */
@@ -21,7 +27,6 @@ body {
   left: 0;
 
   width: 100%;
-
   padding: 12px 16px;
 
   font-size: 11px;
@@ -36,22 +41,14 @@ body {
   z-index: 100;
 }
 
-/* BRAND */
-
 .brand {
   color: #888;
 }
 
-/* BACK BUTTON */
-
 .back {
   color: #666;
-
   text-decoration: none;
-
-  transition:
-    color 0.2s ease,
-    transform 0.2s ease;
+  transition: 0.2s ease;
 }
 
 .back:hover {
@@ -76,19 +73,21 @@ iframe {
 
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
 
-  <a href="../index.html" class="back">
-    ← back
-  </a>
+  <a class="back" href="../index.html">← back</a>
 
   <span class="brand">void™ by jp</span>
 
 </div>
 
-<!-- GAME -->
 <iframe src="https://motox3m2.io/"></iframe>
+
+<script>
+window.addEventListener("load", () => {
+  document.body.classList.add("loaded");
+});
+</script>
 
 </body>
 </html>
