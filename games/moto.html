@@ -19,34 +19,35 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+
   width: 100%;
 
   padding: 12px 16px;
 
   font-size: 11px;
-  color: #888;
   letter-spacing: 2px;
 
   background: rgba(0,0,0,0.6);
 
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
   z-index: 100;
+}
+
+/* BRAND */
+
+.brand {
+  color: #888;
 }
 
 /* BACK BUTTON */
 
 .back {
-  position: fixed;
-
-  top: 12px;
-  left: 120px;
-
   color: #666;
+
   text-decoration: none;
-
-  font-size: 11px;
-  letter-spacing: 2px;
-
-  z-index: 101;
 
   transition:
     color 0.2s ease,
@@ -75,12 +76,16 @@ iframe {
 
 <body>
 
-<div class="topbar">void™ by jp</div>
+<!-- TOP BAR -->
+<div class="topbar">
 
-<!-- BACK BUTTON -->
-<a href="../index.html" class="back">
-  ← back
-</a>
+  <a href="../index.html" class="back">
+    ← back
+  </a>
+
+  <span class="brand">void™ by jp</span>
+
+</div>
 
 <!-- GAME -->
 <iframe src="https://motox3m2.io/"></iframe>
