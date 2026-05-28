@@ -1,1 +1,176 @@
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>void</title>
+
+<style>
+
+body {
+
+  margin: 0;
+
+  background: #000;
+
+  overflow: hidden;
+
+  font-family: Arial;
+}
+
+/* TOPBAR */
+
+.topbar {
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  padding: 12px 18px;
+
+  background: rgba(0,0,0,0.7);
+
+  display: flex;
+
+  gap: 14px;
+
+  z-index: 1000;
+}
+
+.back {
+
+  color: #666;
+
+  text-decoration: none;
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+  transition: 0.2s ease;
+}
+
+.back:hover {
+
+  color: #fff;
+}
+
+/* GAME */
+
+iframe {
+
+  position: absolute;
+
+  top: 40px;
+  left: 0;
+
+  width: 100%;
+  height: calc(100% - 40px);
+
+  border: none;
+}
+
+/* LOADING */
+
+#loading {
+
+  position: fixed;
+
+  inset: 0;
+
+  background: #000;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  color: #777;
+
+  font-size: 11px;
+
+  letter-spacing: 4px;
+
+  z-index: 9999;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="topbar">
+
+  <a class="back" href="index.html">
+    ← back
+  </a>
+
+</div>
+
+<div id="loading">
+LOADING
+</div>
+
+<iframe id="game"></iframe>
+
+<script src="system/games.js"></script>
+
+<script>
+
+const params =
+new URLSearchParams(location.search);
+
+const id =
+params.get("id");
+
+const game =
+games.find(g => g.id === id);
+
+const iframe =
+document.getElementById("game");
+
+const loading =
+document.getElementById("loading");
+
+if(game){
+
+  iframe.src =
+  "games/" + game.id + "/index.html";
+
+}
+
+/* GAME LOADED */
+
+iframe.onload = () => {
+
+  setTimeout(() => {
+
+    loading.style.display = "none";
+
+  }, 500);
+
+};
+
+/* FAILSAFE */
+
+setTimeout(() => {
+
+  loading.innerHTML =
+  "FAILED TO LOAD";
+
+}, 15000);
+
+</script>
+
+</body>
+</html>
+```
 
