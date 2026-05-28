@@ -63,6 +63,44 @@ canvas {
 
 <body>
     <div id="content"></div>
+  <style>
+
+#content {
+
+  position: fixed !important;
+
+  top: 50% !important;
+  left: 50% !important;
+
+  transform: translate(-50%, -50%) !important;
+
+  width: 100vw !important;
+  height: 100vh !important;
+
+  overflow: hidden !important;
+}
+
+/* REMOVE WEIRD MARGINS */
+
+canvas {
+
+  display: block !important;
+
+  margin: 0 auto !important;
+}
+
+html,
+body {
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  overflow: hidden !important;
+
+  background: black !important;
+}
+
+</style>
     <div id="orientation"></div>
     <div id="loader">Loading ...</div>
     <script type="text/javascript" src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
