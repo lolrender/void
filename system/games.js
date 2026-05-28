@@ -1,8 +1,9 @@
 const games = [
-  {
-    id: "motox3m",
-    title: "Moto X3M",
-    image: "covers/motox3m.jpg",
-    path: "games/motox3m/index.html"
-  }
+
+{
+  id: "motox3m",
+  title: "X3",
+  tag: "Moto X3M"
+}
+
 ];
