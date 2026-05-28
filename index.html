@@ -1,11 +1,16 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>void</title>
 
 <style>
+
 * {
   margin: 0;
   padding: 0;
@@ -13,10 +18,13 @@
   font-family: Arial, sans-serif;
 }
 
-/* ===== PAGE FADE IN ===== */
+/* PAGE */
+
 body {
+
   background: #000;
   color: #fff;
+
   overflow-x: hidden;
 
   opacity: 0;
@@ -27,36 +35,53 @@ body.loaded {
   opacity: 1;
 }
 
-/* ===== STARS ===== */
+/* STARS */
 
 #stars {
+
   position: fixed;
   inset: 0;
+
   z-index: 0;
 }
 
 .star {
+
   position: absolute;
+
   background: #fff;
+
   border-radius: 50%;
+
   opacity: 0.35;
+
   animation: twinkle 4s infinite ease-in-out;
 }
 
 @keyframes twinkle {
-  0%,100% { opacity: 0.15; }
-  50% { opacity: 0.5; }
+
+  0%,100% {
+    opacity: 0.15;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
 }
 
-/* ===== BOOT ===== */
+/* BOOT */
 
 #boot {
+
   position: fixed;
   inset: 0;
+
   background: #000;
 
   display: flex;
   flex-direction: column;
+
   justify-content: center;
   align-items: center;
 
@@ -66,112 +91,167 @@ body.loaded {
 }
 
 .logo {
+
   font-size: 42px;
+
   letter-spacing: 14px;
+
   text-transform: lowercase;
 }
 
 .slogan {
+
   margin-top: 12px;
+
   font-size: 14px;
+
   letter-spacing: 3px;
+
   color: #aaa;
 }
 
 .progress {
+
   width: 180px;
   height: 1px;
+
   background: #222;
+
   margin-top: 25px;
+
   overflow: hidden;
 }
 
 .bar {
+
   width: 0%;
   height: 100%;
+
   background: #fff;
+
   animation: load 3s linear forwards;
 }
 
 @keyframes load {
-  to { width: 100%; }
+
+  to {
+    width: 100%;
+  }
+
 }
 
-/* ===== MAIN ===== */
+/* MAIN */
 
 main {
+
   display: none;
+
   padding: 80px 30px;
+
   max-width: 900px;
+
   margin: 0 auto;
+
   position: relative;
+
   z-index: 2;
 }
 
 header {
+
   text-align: center;
+
   margin-bottom: 60px;
 }
 
 h1 {
+
   font-size: 60px;
+
   letter-spacing: 14px;
+
   font-weight: 300;
+
   text-transform: lowercase;
 }
 
 .sub {
+
   margin-top: 10px;
+
   font-size: 11px;
+
   letter-spacing: 3px;
+
   color: #888;
 }
 
-/* ===== GRID ===== */
+/* GRID */
 
 .grid {
+
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+
+  grid-template-columns:
+  repeat(auto-fit, minmax(160px, 1fr));
+
   gap: 14px;
 }
 
-/* ===== CARDS ===== */
+/* CARD */
 
 .card {
+
   border: 1px solid #222;
+
   padding: 16px;
+
   text-decoration: none;
+
   color: #fff;
 
   transition: 0.25s ease;
 }
 
 .card:hover {
+
   border-color: #fff;
+
   transform: translateY(-3px);
 }
 
 .title {
+
   font-size: 13px;
+
   letter-spacing: 1px;
 }
 
 .tag {
+
   margin-top: 6px;
+
   font-size: 10px;
+
   color: #777;
 }
 
 /* VERSION */
 
 .version {
+
   position: fixed;
+
   bottom: 10px;
   right: 14px;
+
   font-size: 10px;
+
   letter-spacing: 2px;
+
   color: #222;
 }
+
 </style>
 
 </head>
@@ -181,106 +261,151 @@ h1 {
 <div id="stars"></div>
 
 <div id="boot">
-  <div class="logo">void</div>
+
+  <div class="logo">
+    void
+  </div>
+
   <div class="slogan"></div>
-  <div class="progress"><div class="bar"></div></div>
+
+  <div class="progress">
+    <div class="bar"></div>
+  </div>
+
 </div>
 
 <main id="main">
 
-  <header>
-    <h1>void</h1>
-    <div class="sub">games</div>
-  </header>
+<header>
 
-  <div class="grid">
+  <h1>void</h1>
 
-    <a class="card" href="games/moto.html">
-      <div class="title">X3</div>
-      <div class="tag">Moto</div>
-    </a>
-
-    <a class="card" href="games/ski.html">
-      <div class="title">SKI</div>
-      <div class="tag">Void Ski</div>
-    </a>
-
-    <a class="card" href="#">
-      <div class="title">EMPTY</div>
-      <div class="tag">slot</div>
-    </a>
-
-    <a class="card" href="#">
-      <div class="title">EMPTY</div>
-      <div class="tag">slot</div>
-    </a>
-
+  <div class="sub">
+    games
   </div>
+
+</header>
+
+<div class="grid" id="grid"></div>
 
 </main>
 
-<div class="version">VOID / 1.0</div>
+<div class="version">
+VOID / 2.0
+</div>
+
+<script src="system/games.js"></script>
 
 <script>
 
-/* FADE IN */
+/* PAGE LOAD */
+
 window.addEventListener("load", () => {
+
   document.body.classList.add("loaded");
+
 });
 
 /* BOOT TEXT */
+
 const bootMessages = [
+
   "made by jp industries",
-  "hello quinn",
-  "chan seh, chan seh - Minh",
   "welcome to void.",
-  "k rich was here",
-  "rasim",
-  "chun li was here",
-  "Richardson Inc.",
-  "Billy was here",
-  "NAV best artist oat; argue with a wall",
-  "good evening nicholas."
+  "good evening.",
+  "system online.",
+  "void initialized."
+
 ];
 
 document.querySelector(".slogan").textContent =
-  bootMessages[Math.floor(Math.random() * bootMessages.length)];
+
+bootMessages[
+Math.floor(Math.random() * bootMessages.length)
+];
 
 /* BOOT TRANSITION */
+
 setTimeout(() => {
 
-  const boot = document.getElementById("boot");
+  const boot =
+  document.getElementById("boot");
 
   boot.style.opacity = "0";
 
   setTimeout(() => {
+
     boot.style.display = "none";
-    document.getElementById("main").style.display = "block";
+
+    document.getElementById("main")
+    .style.display = "block";
+
   }, 500);
 
 }, 2400);
 
 /* STARS */
-const starContainer = document.getElementById("stars");
+
+const starContainer =
+document.getElementById("stars");
 
 for (let i = 0; i < 140; i++) {
-  const star = document.createElement("div");
+
+  const star =
+  document.createElement("div");
+
   star.className = "star";
 
-  const size = Math.random() * 2;
+  const size =
+  Math.random() * 2;
 
-  star.style.width = size + "px";
-  star.style.height = size + "px";
+  star.style.width =
+  size + "px";
 
-  star.style.top = Math.random() * 100 + "%";
-  star.style.left = Math.random() * 100 + "%";
+  star.style.height =
+  size + "px";
 
-  star.style.animationDelay = (Math.random() * 4) + "s";
+  star.style.top =
+  Math.random() * 100 + "%";
+
+  star.style.left =
+  Math.random() * 100 + "%";
+
+  star.style.animationDelay =
+  (Math.random() * 4) + "s";
 
   starContainer.appendChild(star);
+
 }
+
+/* GAME CARDS */
+
+const grid =
+document.getElementById("grid");
+
+games.forEach(game => {
+
+  grid.innerHTML += `
+
+  <a class="card"
+     href="play.html?id=${game.id}">
+
+    <div class="title">
+      ${game.title}
+    </div>
+
+    <div class="tag">
+      ${game.tag}
+    </div>
+
+  </a>
+
+  `;
+
+});
 
 </script>
 
 </body>
 </html>
+```
