@@ -1,7 +1,9 @@
 const games = [
+
 {
-  id: "motox3m",
-  title: "Moto X3M",
-  tag: "Racing"
+  id: "motox3m-winter",
+  title: "X3 Winter",
+  tag: "Moto X3M Winter"
 }
+
 ];
