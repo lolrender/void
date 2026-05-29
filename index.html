@@ -200,23 +200,30 @@ h1 {
 /* CARD */
 
 .card {
+  position: relative;
+  display: block;
 
   border: 1px solid #222;
+  border-radius: 10px;
 
-  padding: 16px;
+  overflow: hidden;
 
   text-decoration: none;
-
   color: #fff;
 
-  transition: 0.25s ease;
+  background: #0a0a0a;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+  
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.08);
+  border-color: #444;
 }
 
-.card:hover {
-
-  border-color: #fff;
-
-  transform: translateY(-3px);
+.card:hover .thumb {
+  transform: scale(1.08);
 }
 
 .thumb {
@@ -228,8 +235,7 @@ h1 {
 
   display: block;
 
-  border: 1px solid #111;
-  margin-bottom: 12px;
+  transition: transform 0.25s ease;
 }
 
 .title {
@@ -399,12 +405,13 @@ games.forEach(game => {
 
   grid.innerHTML += `
 
-  <a class="card"
-     href="play.html?id=${game.id}">
+  <a class="card" href="play.html?id=${game.id}">
 
-    <img class="thumb"
-         src="games/${game.id}/splash.jpeg"
-         alt="${game.title}">
+    <div class="img-wrap">
+      <img class="thumb" src="games/${game.id}/splash.jpeg">
+
+      <div class="play-btn">▶</div>
+    </div>
 
     <div class="title">
       ${game.title}
