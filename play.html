@@ -1,193 +1,119 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-<meta name="viewport"
-content="width=device-width,
-initial-scale=1.0,
-maximum-scale=1.0,
-user-scalable=no">
-
-<title>void</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>void / play</title>
 
 <style>
-
 body {
-
   margin: 0;
-
-  background: #000;
-
+  background: black;
   overflow: hidden;
-
   font-family: Arial;
 }
 
 /* TOPBAR */
-
 .topbar {
-
   position: fixed;
-
   top: 0;
   left: 0;
-
   width: 100%;
-
-  padding: 12px 18px;
-
-  background: rgba(0,0,0,0.7);
+  height: 40px;
 
   display: flex;
-
+  align-items: center;
   gap: 14px;
 
-  z-index: 1000;
+  padding: 0 14px;
+  background: rgba(0,0,0,0.8);
+  z-index: 10;
 }
 
 .back {
-
-  color: #666;
-
+  color: #777;
   text-decoration: none;
-
   font-size: 11px;
-
   letter-spacing: 2px;
-
-  transition: 0.2s ease;
 }
 
 .back:hover {
-
-  color: #fff;
+  color: white;
 }
 
 .brand {
-
-  color: #666;
-
+  color: #555;
   font-size: 11px;
-
   letter-spacing: 2px;
-
-  user-select: none;
 }
-  
+
 /* GAME */
-
 iframe {
-
   position: fixed;
+  top: 40px;
+  left: 0;
 
-  inset: 40px 0 0 0;
-
-  width: 100%;
+  width: 100vw;
   height: calc(100vh - 40px);
 
   border: none;
-
-  background: #000;
+  display: block;
 }
 
 /* LOADING */
-
 #loading {
-
   position: fixed;
-
   inset: 0;
-
-  background: #000;
+  background: black;
 
   display: flex;
-
   justify-content: center;
   align-items: center;
 
   color: #777;
-
   font-size: 11px;
+  letter-spacing: 3px;
 
-  letter-spacing: 4px;
-
-  z-index: 9999;
+  z-index: 999;
 }
-
 </style>
-
 </head>
 
 <body>
 
 <div class="topbar">
-
-  <a class="back" href="index.html">
-    ← back
-  </a>
-
-  <div class="brand">
-    made by jp
-  </div>
-  
+  <a class="back" href="index.html">← back</a>
+  <div class="brand">made by jp</div>
 </div>
 
-<div id="loading">
-LOADING
-</div>
+<div id="loading">LOADING</div>
 
 <iframe id="game"></iframe>
 
 <script src="system/games.js"></script>
 
 <script>
+const params = new URLSearchParams(location.search);
+const id = params.get("id");
 
-const params =
-new URLSearchParams(location.search);
+const game = games.find(g => g.id === id);
 
-const id =
-params.get("id");
+const iframe = document.getElementById("game");
+const loading = document.getElementById("loading");
 
-const game =
-games.find(g => g.id === id);
-
-const iframe =
-document.getElementById("game");
-
-const loading =
-document.getElementById("loading");
-
-if(game){
-
-  iframe.src =
-  "games/" + game.id + "/index.html";
-
+if (!game) {
+  loading.innerHTML = "GAME NOT FOUND";
+} else {
+  iframe.src = "games/" + game.id + "/index.html";
 }
 
-/* GAME LOADED */
-
+/* FIX LOADING */
 iframe.onload = () => {
-
   setTimeout(() => {
-
     loading.style.display = "none";
-
-  }, 500);
-
+  }, 400);
 };
-
-/* FAILSAFE */
-
-setTimeout(() => {
-
-  loading.innerHTML =
-  "FAILED TO LOAD";
-
-}, 15000);
-
 </script>
 
 </body>
 </html>
-
