@@ -1,57 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+    <link rel="stylesheet" href="assets/css/app.css" type="text/css" />
+    <title>
+        MotoX3M
+    </title>
 
-<title>Moto X3M</title>
-
-<style>
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: black;
-}
-
-#content {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-canvas {
-  max-width: 100%;
-  max-height: 100%;
-  display: block;
-}
-</style>
 </head>
 
 <body>
 
-<div id="content"></div>
-<div id="loader">Loading...</div>
+    <div id="content"></div>
+    <div id="orientation"></div>
+    <div id="loader">Loading ...</div>
 
-<script>
-window.addEventListener("load", () => {
-  document.getElementById("loader").style.display = "none";
-});
-</script>
+    <script
+        id="gamebridge-sdk"
+        src="gamebridge.js"
+        data-ad-frequency="30s"
+        data-gameid="c8kv1eursfeikq6ffc50">
+    </script>
+    <script src="pk-sdk.js"></script>
 
-<!-- WORKING MOTOX3M BUILD -->
-<script src="https://cdn.jsdelivr.net/gh/Rabbibo/moto@35b09901c725d990145f7b305cbcb42ddcee4782/assets/css/app.css"></script>
+    <script type="text/javascript" src="https://imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
 
-<script src="https://cdn.jsdelivr.net/gh/Stypical/lacklack@0959ed/motox3m/assets/lib/nape.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/Stypical/lacklack@0959ed/motox3m/assets/lib/jquery-3.1.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/Stypical/lacklack@0959ed/motox3m/assets/lib/easeljs-0.8.2.combined.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/Stypical/lacklack@0959ed/motox3m/assets/lib/bluebird.min.js"></script>
+    <script type="text/javascript" src="assets/lib/nape.min.js">
+        var nape = "nape.min.js";
+    </script>
+    <script type="text/javascript" src="assets/lib/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="assets/lib/easeljs-0.8.2.combined.js"></script>
+    <script type="text/javascript" src="assets/lib/bluebird.min.js"></script>
+    <script type="text/javascript" src="assets/lib/phaser.min.js"></script>
+    <script type="text/javascript" src="assets/lib/phaser-cachebuster.min.js"></script>
+    <script type="text/javascript" src="assets/lib/phaser-super-storage.min.js"></script>
+    <script type="text/javascript" src="assets/lib/dragonBones.min.js"></script>
+    <!-- <script type="text/javascript" src="assets/lib/pksl.js"></script> -->
 
-<script src="https://cdn.jsdelivr.net/gh/bobydob/JSEngine@0e96212/build/m3m/m3m.min.js"></script>
+<script type="text/javascript" src="motox3m.min.js?4e65ed0ec1976a14ed60"></script></body>
 
-</body>
 </html>
