@@ -26,7 +26,7 @@ body {
   gap: 14px;
 
   padding: 0 14px;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   z-index: 10;
 }
 
@@ -47,8 +47,8 @@ body {
   letter-spacing: 2px;
 }
 
-/* GAME */
-iframe {
+/* GAME WRAPPER (FIXES FULLSCREEN BUGS) */
+.game-wrap {
   position: fixed;
   top: 40px;
   left: 0;
@@ -56,6 +56,13 @@ iframe {
   width: 100vw;
   height: calc(100vh - 40px);
 
+  overflow: hidden;
+}
+
+/* GAME */
+iframe {
+  width: 100%;
+  height: 100%;
   border: none;
   display: block;
 }
@@ -86,9 +93,11 @@ iframe {
   <div class="brand">made by jp</div>
 </div>
 
-<div id="loading">LOADING</div>
+<div class="game-wrap">
+  <iframe id="game"></iframe>
+</div>
 
-<iframe id="game"></iframe>
+<div id="loading">LOADING</div>
 
 <script src="system/games.js"></script>
 
@@ -101,18 +110,26 @@ const game = games.find(g => g.id === id);
 const iframe = document.getElementById("game");
 const loading = document.getElementById("loading");
 
+/* LOAD GAME */
 if (!game) {
   loading.innerHTML = "GAME NOT FOUND";
 } else {
   iframe.src = "games/" + game.id + "/index.html";
 }
 
-/* FIX LOADING */
+/* SUCCESS LOAD */
 iframe.onload = () => {
   setTimeout(() => {
     loading.style.display = "none";
-  }, 400);
+  }, 300);
 };
+
+/* FAILSAFE (prevents infinite loading forever) */
+setTimeout(() => {
+  if (loading.style.display !== "none") {
+    loading.innerHTML = "TAKING TOO LONG...";
+  }
+}, 8000);
 </script>
 
 </body>
