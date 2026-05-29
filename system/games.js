@@ -2,14 +2,16 @@ const games = [
 
 {
   id: "motox3m-winter",
-  title: "X3 Winter",
-  tag: "Moto X3M Winter"
+  title: "MotoX3M Winter",
+  tag: "MotoX3M Winter",
+  image: "games/motox3m-winter/splash.jpeg"
 },
 
 {
   id: "motox3m-spooky",
-  title: "X3 Spooky",
-  tag: "Moto X3M Spooky"
+  title: "MotoX3M Spooky",
+  tag: "MotoX3M Spooky",
+  image: "games/motox3m-spooky/splash.jpeg"
 }
 
 ];
