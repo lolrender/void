@@ -217,9 +217,9 @@ h1 {
 }
   
 .card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.08);
-  border-color: #444;
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 0 25px rgba(255,255,255,0.12);
+  border-color: #555;
 }
 
 .card:hover .thumb {
@@ -362,19 +362,17 @@ const grid = document.getElementById("grid");
 
 games.forEach(game => {
   grid.innerHTML += `
-    <a class="card" href="play.html?id=${game.id}">
-      
-      <div class="img-wrap">
-        <img class="thumb" src="${game.image}" />
-      </div>
+  <a class="card" href="play.html?id=${game.id}">
 
-      <div style="padding:10px;">
-        <div class="title">${game.title}</div>
-        <div class="tag">${game.tag}</div>
-      </div>
+    <img class="thumb" src="${game.image}" />
 
-    </a>
-  `;
+    <div style="padding:10px;">
+      <div class="title">${game.title}</div>
+      <div class="tag">${game.tag}</div>
+    </div>
+
+  </a>
+`;
 });
 </script>
 
