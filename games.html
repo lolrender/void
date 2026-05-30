@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>void / games</title>
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: Arial;
+}
+
+header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  padding: 20px;
+}
+
+.card {
+  display: block;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  border-color: #555;
+}
+
+.thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.info {
+  padding: 10px;
+}
+
+.title {
+  font-size: 13px;
+}
+
+.tag {
+  font-size: 10px;
+  color: #777;
+  margin-top: 5px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html">← home</a>
+  <div>games</div>
+</header>
+
+<div class="grid" id="grid"></div>
+
+<script src="system/games.js"></script>
+
+<script>
+const grid = document.getElementById("grid");
+
+const params = new URLSearchParams(location.search);
+const search = (params.get("search") || "").toLowerCase();
+
+games
+.filter(g => g.title.toLowerCase().includes(search))
+.forEach(game => {
+  grid.innerHTML += `
+    <a class="card" href="play.html?id=${game.id}">
+      <img class="thumb" src="${game.image}">
+      <div class="info">
+        <div class="title">${game.title}</div>
+        <div class="tag">${game.tag}</div>
+      </div>
+    </a>
+  `;
+});
+</script>
+
+</body>
+</html>
