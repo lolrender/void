@@ -110,40 +110,36 @@ const game = games.find(g => g.id === id);
 const iframe = document.getElementById("game");
 const loading = document.getElementById("loading");
 
-/* LOAD GAME */
 if (!game) {
   loading.innerHTML = "GAME NOT FOUND";
 } else {
   iframe.src = "games/" + game.id + "/index.html";
 }
 
-/* SUCCESS LOAD */
 iframe.onload = () => {
   setTimeout(() => {
     loading.style.display = "none";
   }, 300);
 };
 
-/* FAILSAFE (prevents infinite loading forever) */
 setTimeout(() => {
   if (loading.style.display !== "none") {
     loading.innerHTML = "TAKING TOO LONG...";
   }
 }, 8000);
 
-/* AUDIO FIX (UNLOCKS SOUND ON FIRST CLICK) */
+/* AUDIO FIX */
 document.addEventListener("click", () => {
   const AudioContext = window.AudioContext || window.webkitAudioContext;
 
-  if (AudioContext) {
-    const ctx = new AudioContext();
+  if (!AudioContext) return;
 
-    if (ctx.state === "suspended") {
-      ctx.resume();
-    }
+  const ctx = new AudioContext();
+
+  if (ctx.state === "suspended") {
+    ctx.resume();
   }
 }, { once: true });
-
 </script>
 
 </body>
