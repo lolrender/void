@@ -13,8 +13,9 @@ body {
   font-family: Arial;
 }
 
-header {
-  padding: 20px;
+/* TOP BAR */
+.topbar {
+  padding: 16px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -23,20 +24,26 @@ header {
 a {
   color: #aaa;
   text-decoration: none;
+  font-size: 12px;
 }
 
+a:hover {
+  color: white;
+}
+
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 12px;
+  gap: 14px;
   padding: 20px;
 }
 
+/* CARD */
 .card {
-  display: block;
   background: #111;
   border: 1px solid #222;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
   text-decoration: none;
   color: white;
@@ -45,13 +52,14 @@ a {
 
 .card:hover {
   transform: scale(1.03);
-  border-color: #555;
+  border-color: #444;
 }
 
 .thumb {
   width: 100%;
   aspect-ratio: 16/9;
   object-fit: cover;
+  display: block;
 }
 
 .info {
@@ -65,17 +73,16 @@ a {
 .tag {
   font-size: 10px;
   color: #777;
-  margin-top: 5px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<div class="topbar">
   <a href="index.html">← home</a>
   <div>games</div>
-</header>
+</div>
 
 <div class="grid" id="grid"></div>
 
@@ -84,12 +91,7 @@ a {
 <script>
 const grid = document.getElementById("grid");
 
-const params = new URLSearchParams(location.search);
-const search = (params.get("search") || "").toLowerCase();
-
-games
-.filter(g => g.title.toLowerCase().includes(search))
-.forEach(game => {
+games.forEach(game => {
   grid.innerHTML += `
     <a class="card" href="play.html?id=${game.id}">
       <img class="thumb" src="${game.image}">
