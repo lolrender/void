@@ -321,9 +321,62 @@ VOID / 2.0
 <script>
 window.addEventListener("load", () => {
   document.body.classList.add("loaded");
+});
 
-  document.getElementById("boot").style.display = "none";
-  document.getElementById("main").style.display = "block";
+/* BOOT TEXT */
+const bootMessages = [
+  "made by jp industries",
+  "welcome to void.",
+  "system online.",
+  "void initialized."
+];
+
+document.querySelector(".slogan").textContent =
+  bootMessages[Math.floor(Math.random() * bootMessages.length)];
+
+/* BOOT SCREEN */
+setTimeout(() => {
+  document.getElementById("boot").style.opacity = "0";
+
+  setTimeout(() => {
+    document.getElementById("boot").style.display = "none";
+    document.getElementById("main").style.display = "block";
+  }, 500);
+}, 2000);
+
+/* STARS */
+const starContainer = document.getElementById("stars");
+
+for (let i = 0; i < 120; i++) {
+  const star = document.createElement("div");
+  star.className = "star";
+
+  const size = Math.random() * 2;
+  star.style.width = size + "px";
+  star.style.height = size + "px";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.animationDelay = Math.random() * 4 + "s";
+
+  starContainer.appendChild(star);
+}
+
+/* GAME GRID */
+const grid = document.getElementById("grid");
+
+games.forEach(game => {
+  grid.innerHTML += `
+  <a class="card" href="play.html?id=${game.id}">
+
+    <img class="thumb" src="${game.image}" />
+
+    <div style="padding:10px;">
+      <div class="title">${game.title}</div>
+      <div class="tag">${game.tag}</div>
+    </div>
+
+  </a>
+`;
 });
 </script>
 
