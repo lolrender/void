@@ -10,5 +10,11 @@ const games = [
     title: "Moto X3M Spooky",
     tag: "Racing",
     image: "games/motox3m-spooky/splash.jpeg"
-  }
+  },
+  {
+    id: "motox3m-pool",
+    title: "Moto X3M Pool",
+    tag: "Racing",
+    image: "games/motox3m-pool/splash.jpeg"
+  }    
 ];
